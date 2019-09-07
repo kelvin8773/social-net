@@ -35,6 +35,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
+
 # Add other component gems 
 gem 'devise'
 gem 'omniauth-facebook'
