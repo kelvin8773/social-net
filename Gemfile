@@ -38,7 +38,7 @@ gem 'jquery-rails'
 
 # Add other component gems 
 gem 'devise'
-gem 'omniauth-facebook'
+# gem 'omniauth-facebook'
 
 gem 'faker'
 gem 'simple_form'
