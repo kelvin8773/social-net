@@ -13,3 +13,34 @@
  */
 
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Acme|Anton|PT+Sans+Narrow|Pacifico|Red+Hat+Display:400,500,700,900,900i&display=swap');
+
+// font-family: 'Red Hat Display', sans-serif;
+// font-family: 'PT Sans Narrow', sans-serif;
+// font-family: 'Anton', sans-serif;
+// font-family: 'Pacifico', cursive;
+// font-family: 'Acme', sans-serif;
+
+body {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Acme', sans-serif;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-family: 'Pacifico', cursive;
+}
+
+footer {
+  background-color: #4e2e85;
+  flex-shrink: none;
+}
