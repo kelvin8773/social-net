@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-  resources :posts
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
-  
-  root 'pages#home'
+  root 'posts#index'
 
+  devise_for :users, 
+              path: '', 
+              path_names: { sign_in: 'login', 
+                            sign_out: 'logout', 
+                            sign_up: 'register' },
+              controllers: { sessions: 'users/sessions' }
+    
+    
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
-
+    
+  resources :posts
   
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {
