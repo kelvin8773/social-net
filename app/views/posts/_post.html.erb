@@ -1,0 +1,35 @@
+<div class="p-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="media">
+      <%= image_tag post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 4rem;" %>
+      <div class="media-body">
+          <h5 class="mt-0"> <%= post.user.name %></h5>
+          <small class="font-weight-lighter text-capitalize"><%= time_ago_in_words(post.created_at) %> ago. </small>
+      </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+
+     <p class="card-text"> <%= post.content %></p>
+     
+     <div class="mb-3"> 
+      <% if post.picture.empty? %>
+        <img src="https://images.unsplash.com/photo-1566640269407-436c75fc9495?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" class="card-img-top rounded-lg" alt="Post Picture Alt" >
+      <% else %>
+        <%= image_tag post.picture, class: "card-img-top rounded-lg", alt: "Post Picture" %>
+      <% end %>
+    </div>
+
+      <% if current_user?(post.user) %>
+        <%= link_to "Edit", edit_post_path(post), class: "btn btn-info" %>
+        <%= link_to "Destroy", post, 
+                              method: :delete,
+                              data: { confirm: "You sure?" },
+                              class: "btn btn-danger" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

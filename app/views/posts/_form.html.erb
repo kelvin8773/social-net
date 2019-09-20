@@ -3,13 +3,25 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :content %>
-    <%= f.input :picture %>
-    <%= f.input :user_id %>
-  </div>
+  <div class="card">
+    <div class="card-header">
+      <small><b>Create Post</b></small>
+    </div>
+    <div class="card-body">
+      <div class="form-inputs">
+        <%= f.input :content,
+                    as: :text,
+                    label: false,
+                    placeholder: "Say Something Here ...",
+                    hint: "Maximum 500 Characters" %>
+        <%= f.input :picture,
+                    label: false,
+                    placeholder: "Picture Url here ..." %>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+      <div class="form-actions card-text">
+        <%= f.button :submit, class: "btn btn-info" %>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'jquery-rails'
 
 # login & authentication
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 # gem 'omniauth-facebook'
 
 # Others / misc
