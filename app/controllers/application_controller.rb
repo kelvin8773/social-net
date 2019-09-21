@@ -3,6 +3,4 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   include DeviseWhitelist
-
-  
 end

@@ -1,1 +1,10 @@
-<%= render 'users/user_list', user: current_user %>
+<div class="containter pt-3">
+  <h5 class="text-secondary">Current User:</h5>
+  <%= render 'users/user_list', user: current_user %>
+  <hr>
+  <h5 class="text-secondary">Friends:</h6>
+    <small class="text-warning">
+      <%= "You Don't have Friends yet, go add some." %>
+    </small>
+
+</div>

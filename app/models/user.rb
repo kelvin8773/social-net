@@ -11,9 +11,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 5 }
 
-  gravtastic :secure => true,
-            :filetype => :gif,
-            :size => 160
+  gravtastic secure: true,
+             filetype: :gif,
+             size: 160
 
   def first_name
     name.split(' ').first
