@@ -10,11 +10,13 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get about' do
     get pages_about_url
+    get new_user_session_path
     assert_response :success
   end
 
   test 'should get contact' do
     get pages_contact_url
+    get new_user_session_path
     assert_response :success
   end
 end

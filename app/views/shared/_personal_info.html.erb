@@ -1,0 +1,14 @@
+<div class="card" >
+      <%= image_tag user.gravatar_url, class: "rounded-lg rounded-pill w-50 mx-auto mt-2" %>
+      <div class="card-body">
+        <h6 class="card-title text-center"> <%= user.name %> </h6>
+      </div>
+
+      <ul class="list-group list-group-flush text-center">
+        <li class="list-group-item"><small><b>From:</b> China</small></li>
+        <li class="list-group-item text-truncate"><small>My Intro here.</small></li>
+        <li class="list-group-item"><small>Joined at <%= time_ago_in_words(user.created_at) %> ago. </small></li>
+
+      </ul>
+      
+    </div>

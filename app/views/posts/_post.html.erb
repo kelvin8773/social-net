@@ -1,0 +1,39 @@
+<div class="p-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="media">
+      <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(post.user) %>
+      <div class="media-body">
+          <small class="mt-0"><b> <%= link_to post.user.name, users_show_path(post.user), class: "text-muted" %></b></small> 
+          <br>
+          <small class="font-weight-lighter text-capitalize"><%= time_ago_in_words(post.created_at) %> ago. </small>
+          <% if post.updated_at > post.created_at %>
+            <span><small class="font-italic text-black-50">modified</small></span>
+          <% end %>
+      </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+
+     <p class="card-text"> <%= post.content %></p>
+     
+     <div class="mb-3"> 
+      <% if post.picture.empty? %>
+        <img src="https://images.unsplash.com/photo-1566640269407-436c75fc9495?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" class="card-img-top rounded-lg" alt="Post Picture Alt" >
+      <% else %>
+        <%= image_tag post.picture, class: "card-img-top rounded-lg", alt: "Post Picture" %>
+      <% end %>
+    </div>
+
+      <% if current_user?(post.user) %>
+        <%= link_to "Edit", edit_post_path(post), class: "btn btn-info" %>
+        <%= link_to "Destroy", post, 
+                              method: :delete,
+                              data: { confirm: "You sure?" },
+                              class: "btn btn-danger" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

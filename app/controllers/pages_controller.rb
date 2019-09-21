@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-  def home; end
+  before_action :authenticate_user!, only: %i[about contact]
+
+  def home
+    @user = User.new
+  end
 
   def about; end
 

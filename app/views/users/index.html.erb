@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'shared/personal_info', user: current_user %>
+  </div>
+
+  <div class="col-md-9 bg-light d-flex justify-content-around">
+   <div class="row"> 
+    <%= render @users %>
+  </div>
+  </div>
+
+</div>
