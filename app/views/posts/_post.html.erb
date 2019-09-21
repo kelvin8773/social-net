@@ -2,10 +2,14 @@
   <div class="card">
     <div class="card-header">
       <div class="media">
-      <%= image_tag post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 4rem;" %>
+      <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(post.user) %>
       <div class="media-body">
-          <h5 class="mt-0"> <%= post.user.name %></h5>
+          <small class="mt-0"><b> <%= link_to post.user.name, users_show_path(post.user), class: "text-muted" %></b></small> 
+          <br>
           <small class="font-weight-lighter text-capitalize"><%= time_ago_in_words(post.created_at) %> ago. </small>
+          <% if post.updated_at > post.created_at %>
+            <span><small class="font-italic text-black-50">modified</small></span>
+          <% end %>
       </div>
       </div>
     </div>

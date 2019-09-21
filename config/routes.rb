@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'posts#index'
-
+  
+  get 'users/index'
+  get 'users/show'
+  
   devise_for :users, 
               path: '', 
               path_names: { sign_in: 'login', 
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
   resources :posts
   
   # Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/show'
+  
   #   devise_for :users, controllers: {
   #     registraions: 'users/registraions',
   #     sessions: 'users/sessions',
