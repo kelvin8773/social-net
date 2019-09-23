@@ -2,7 +2,9 @@
   <div class="card">
     <div class="card-header">
       <div class="media">
-      <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(post.user) %>
+      <div data-toggle="tooltip" data-placement="top" title="<%= post.user.name %>" >
+        <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(post.user) %>
+      </div>
       <div class="media-body">
           <small class="mt-0"><b> <%= link_to post.user.name, users_show_path(post.user), class: "text-muted" %></b></small> 
           <br>
@@ -26,13 +28,16 @@
       <% end %>
     </div>
 
-      <% if current_user?(post.user) %>
-        <%= link_to "Edit", edit_post_path(post), class: "btn btn-info" %>
-        <%= link_to "Destroy", post, 
-                              method: :delete,
-                              data: { confirm: "You sure?" },
-                              class: "btn btn-danger" %>
-      <% end %>
+    <%= render 'comments/form', post: post %>
+    <%= render post.comments %>
+
+    <% if current_user?(post.user) %>
+      <%= link_to "Edit", edit_post_path(post), class: "btn btn-info" %>
+      <%= link_to "Destroy", post, 
+                            method: :delete,
+                            data: { confirm: "You sure?" },
+                            class: "btn btn-danger" %>
+    <% end %>
 
     </div>
   </div>

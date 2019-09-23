@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # byebug
+    @comment = Comment.new
     @users = User.all
     @user = User.find_by(id: params[:format])
     @myposts = Post.where(user_id: @user.id)

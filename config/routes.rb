@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+  post 'comments/create'
+
+  post 'comments/update'
+
+  delete 'comments/destroy'
+
   root 'posts#index'
   
   get 'users/index'
@@ -19,6 +26,9 @@ Rails.application.routes.draw do
   resources :posts
   
   # Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/update'
+  get 'comments/destroy'
   get 'users/index'
   get 'users/show'
   

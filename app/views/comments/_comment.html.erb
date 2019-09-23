@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between bg-light px-4 pt-3 pb-1 mb-2 rounded shadow-sm"> 
+  <div>
+    <span data-toggle="tooltip" data-placement="top" title="<%= comment.user.name %>" >
+      <%= link_to image_tag(comment.user.gravatar_url, 
+              class: "rounded-circle mr-2", 
+              style: "width: 2rem;" ), 
+              users_show_path(comment.user) %>
+    </span>
+    <small class="d-inline-block text-truncate" style="max-width: 20rem;"> 
+      <%= comment.content %> 
+    </small> 
+  </div>
+
+  <div>
+    <small> 
+      <div class="text-black-50">  <%= time_ago_in_words(comment.updated_at) %> ago. </div>
+      <div class="text-right">
+        <%= link_to "like", "#", class: "mx-1" %>
+        <% if current_user?(comment.user) %>
+          <%= link_to "delete", "#", class: "mx-1 text-danger" %>
+        <% end %>
+      </div>
+    </small>
+
+  </div>
+
+</div>
