@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
+
   root 'posts#index'
-  
-  get 'users/index'
-  get 'users/show'
-  
+
   devise_for :users, 
               path: '', 
               path_names: { sign_in: 'login', 
@@ -17,17 +15,19 @@ Rails.application.routes.draw do
   get 'pages/contact'
     
   resources :posts
+  resources :likes
   
   # Rails.application.routes.draw do
+
+  get 'comments/new'
+  post 'comments/create'
+  post 'comments/update'
+  delete 'comments/destroy'
+
   get 'users/index'
   get 'users/show'
-  
-  #   devise_for :users, controllers: {
-  #     registraions: 'users/registraions',
-  #     sessions: 'users/sessions',
-  #     passwords: 'users/passwords',
-  #     confirmations: 'users/confirmations'
-  #   }
-  # end
+
+  post 'likes/create'
+  delete 'likes/destroy'
 
 end

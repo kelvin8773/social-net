@@ -2,7 +2,9 @@
   <div class="card">
     <div class="card-header">
       <div class="media">
-      <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(post.user) %>
+      <div data-toggle="tooltip" data-placement="top" title="<%= post.user.name %>" >
+        <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(post.user) %>
+      </div>
       <div class="media-body">
           <small class="mt-0"><b> <%= link_to post.user.name, users_show_path(post.user), class: "text-muted" %></b></small> 
           <br>
@@ -26,14 +28,44 @@
       <% end %>
     </div>
 
-      <% if current_user?(post.user) %>
-        <%= link_to "Edit", edit_post_path(post), class: "btn btn-info" %>
-        <%= link_to "Destroy", post, 
-                              method: :delete,
-                              data: { confirm: "You sure?" },
-                              class: "btn btn-danger" %>
-      <% end %>
+    <div class="d-flex justify-content-between align-items-bottom mx-2">
+      
+      <small class="d-flex flex-start">
+        <% if like = post.liked?(current_user) %>
+          <span> <%= post.likes.count %> </span>
+          <%= link_to  likes_destroy_path(like), method: :delete, class: "mx-2" do  %>
+            <i class="fas fa-thumbs-up text-primary"></i>
+          <% end %>
 
+        <% else %>
+          <%= simple_form_for(@like, url:likes_create_path, html: {class: "ml-1"} ) do |f| %> 
+              <%= f.hidden_field :likeable_type, value: "Post" %>
+              <%= f.hidden_field :likeable_id, value: post.id %>
+              <%= f.submit "Like", class: "btn btn-link" %>
+          <% end %>
+        <% end %>
+      </small>
+
+ 
+      <small>
+        <% if current_user?(post.user) %>
+          <%= link_to "Edit", edit_post_path(post), class: "text-info mx-1" %>
+          <%= link_to "Destroy", post, 
+                                method: :delete,
+                                data: { confirm: "You sure?" },
+                                class: "text-danger mx-1" %>
+        <% end %>
+      </small>
+    </div>
+
+    <hr>
+
+    <div class="m-3">
+      <%= render 'comments/form', post: post %>
+      <%= render post.comments %>
+    </div>
+
+    
     </div>
   </div>
 </div>
