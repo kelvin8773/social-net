@@ -11,9 +11,9 @@
                     placeholder: "What do you think ... ?" %>
       </div>
 
-      <div class="form-actions card-text">
+      <div class="form-actions text-right">
         <%= f.hidden_field :post_id, value: post.id %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.submit "Comment", class: "btn btn-success" %>
       </div>
 <% end %>
 <hr class="my-2">
