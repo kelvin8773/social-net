@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   before_action :authenticate_user!
   # before_action :find_likeable
-  
 
   def create
     # byebug
@@ -20,11 +21,11 @@ class LikesController < ApplicationController
     # byebug
     @like = Like.find_by(id: params[:format])
 
-      if @like.destroy
-        flash[:notice] = "You unliked!"
-      else
-        flash[:alert] = "You can not unlike."
-      end
+    if @like.destroy
+      flash[:notice] = 'You unliked!'
+    else
+      flash[:alert] = 'You can not unlike.'
+    end
     redirect_to root_url
   end
 
