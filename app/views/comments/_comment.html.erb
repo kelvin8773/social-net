@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-between bg-light px-4 pt-3 pb-1 mb-3 rounded shadow-sm"> 
+  <div>
+    <span data-toggle="tooltip" data-placement="top" title="<%= comment.user.name %>" >
+      <%= link_to image_tag(comment.user.gravatar_url, 
+              class: "rounded-circle mr-2", 
+              style: "width: 2rem;" ), 
+              users_show_path(comment.user) %>
+    </span>
+    <small class="d-inline-block text-truncate" style="max-width: 20rem;"> 
+      <%= comment.content %> 
+    </small> 
+  </div>
+
+  <div>
+    <small> 
+      <div class="text-black-50">  <%= time_ago_in_words(comment.updated_at) %> ago. </div>
+      <div class="d-flex flex-end text-right ">
+        
+        
+          <% if like = comment.liked?(current_user) %>
+            <span> <%= comment.likes.count %> </span>
+            <%= link_to  likes_destroy_path(like), method: :delete, class: "mx-2" do  %>
+              <i class="fas fa-thumbs-up text-primary"></i>
+            <% end %>
+
+          <% else %>
+            <%= simple_form_for(@like, url:likes_create_path, html: {class: "ml-1"} ) do |f| %> 
+                <%= f.hidden_field :likeable_type, value: "Comment" %>
+                <%= f.hidden_field :likeable_id, value: comment.id %>
+                <%= f.submit "Like", class: "text-info mr-3 rounded-lg bg-light" %>
+            <% end %>
+          <% end %>
+
+
+        <% if current_user?(comment.user) %>
+          <%= link_to "Delete", "#", class: "text-danger" %>
+        <% end %>
+      </div>
+    </small>
+
+  </div>
+
+</div>
