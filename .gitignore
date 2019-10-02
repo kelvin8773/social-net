@@ -79,6 +79,9 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore cloudinary config
+/config/cloudinary.yml
+
 
 
 
