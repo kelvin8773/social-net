@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: devopss
+  api_key: '396943168394617'
+  api_secret: JDvucpXCd0WTn9Korr1jHoqVweY
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: devopss
+  api_key: '396943168394617'
+  api_secret: JDvucpXCd0WTn9Korr1jHoqVweY
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: devopss
+  api_key: '396943168394617'
+  api_secret: JDvucpXCd0WTn9Korr1jHoqVweY
+  enhance_image_tag: true
+  static_file_support: false
