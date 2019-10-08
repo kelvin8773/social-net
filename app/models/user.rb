@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   validates :name, presence: true, length: { minimum: 5 }
 
@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{ |fs| fs.user == user }
+    friendship = inverse_friendships.find { |fs| fs.user == user }
     friendship.confirmed = true
     friendship.save
   end
@@ -53,5 +53,4 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
-
 end

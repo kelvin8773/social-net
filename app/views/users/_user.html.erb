@@ -1,11 +1,20 @@
 <div class="col-md-4 my-4">
   <div class="card text-center col-md-12" >
-    <%= image_tag user.gravatar_url, class: "rounded-lg rounded-pill w-25 mx-auto mt-2" %>
+    <%= link_to image_tag(user.gravatar_url, class: "rounded-circle mx-auto mt-3", style: "width: 3.5rem;" ), users_show_path(user) %>
     <div class="card-body">
-      <h6 class="card-title text-center"> <%= user.name %> </h6>
+      <h6 class="card-title text-center"> <%= link_to user.name, users_show_path(user), class: "text-black-50" %> </h6>
       <p class="card-text"><small><b>From:</b> China</small></p>
       <p class="card-text"><small>Joined at <%= time_ago_in_words(user.created_at) %> ago. </small></p>
-      <%= link_to "More..", users_show_path(user), class: "btn btn-info"%>
+
+      <% if current_user.friend?(user) %> 
+        <%= link_to "is Your Friend.", "#", class: "btn btn-info"%>
+
+      <% elsif current_user.pending_friends.include?(user) %>
+        <%= link_to "Pending...", "#", class: "btn btn-success"%>
+
+      <% else %>
+        <%= link_to "Friend?", users_show_path(user), class: "btn btn-primary"%>
+      <% end %>
     </div>
 
   </div>
