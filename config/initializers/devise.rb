@@ -10,6 +10,8 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '7b25ae85495a30a2db101ab2ef670560fa7dae303c4b7768636c79d8ff7e1d96b573a8cde538ab6d4d3e18bca61d25212f320201ae8ef4edce327d7b66a0df56'
 
+  config.omniauth :facebook, ENV["FACEBOOK_API_DEV_ID"], ENV["FACEBOOK_API_DEV_SECRET"], callback_url:"http://localhost:3100/auth/facebook/callback"
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -296,4 +298,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
 end
