@@ -1,10 +1,13 @@
 <div class="containter pt-3">
-  <h5 class="text-secondary">Current User:</h5>
-  <%= render 'users/user_list', user: current_user %>
-  <hr>
   <h5 class="text-secondary">Friends:</h6>
-    <small class="text-warning">
-      <%= "You Don't have Friends yet, go add some." %>
-    </small>
+    <% if user.friends.empty? %>
+      <small class="text-warning">
+        <%= "Don't friends? Go add some." %>
+      </small>
+    <% else %>
+      <% user.friends.each do |f|  %>
+        <%= render 'users/user_list', user: f %>
+      <% end %>
+    <% end %>
 
 </div>

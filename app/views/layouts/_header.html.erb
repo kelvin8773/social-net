@@ -8,16 +8,7 @@
     <ul class="navbar-nav ml-auto">
       
       <% if user_signed_in? %>
-        <li class="nav-item">  
-            <%= link_to "My Profile", users_show_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">  
-            <%= link_to "Friends", users_index_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">  
-            <%= link_to "About", pages_about_path, class: "nav-link" %>
-        </li>
-        
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%=  current_user.first_name %>
@@ -29,6 +20,14 @@
             <%= link_to "logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li> 
+
+        <li class="nav-item">  
+            <%= link_to "My Profile", users_show_path(current_user), class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">  
+            <%= link_to "Find Friends", users_index_path, class: "nav-link" %>
+        </li>
         
       </ul>     
       <% else %>

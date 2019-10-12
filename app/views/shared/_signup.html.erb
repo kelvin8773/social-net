@@ -31,14 +31,16 @@
                     placeholder: "Password Confirm",
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
-
-                    
       </div>
 
       <div class="form-actions">
         <%= f.button :submit, "Sign up", class: "btn btn-primary my-3" %>
       </div>
   <% end %>
+    <h5>Or ... </h5>
+    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, 
+        class: "btn btn-light border border-primary text-primary font-weight-bold" %>
+
   </div>
 </div>
 

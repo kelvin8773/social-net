@@ -1,13 +1,32 @@
-<div class="card" >
+<div class="card"  >
       <%= image_tag user.gravatar_url, class: "rounded-lg rounded-pill w-50 mx-auto mt-2" %>
       <div class="card-body">
-        <h6 class="card-title text-center"> <%= user.name %> </h6>
+        <h6 class="card-title text-center"> 
+          <%= user.name %> 
+          <% if user.gender == "female" %>
+                <i class="fas fa-venus fa-lg mx-2"></i>
+            <% else %>
+                <i class="fas fa-mars fa-lg mx-2"></i>
+            <% end %>
+        </h6>
       </div>
 
       <ul class="list-group list-group-flush text-center">
-        <li class="list-group-item"><small><b>From:</b> China</small></li>
-        <li class="list-group-item text-truncate"><small>My Intro here.</small></li>
-        <li class="list-group-item"><small>Joined at <%= time_ago_in_words(user.created_at) %> ago. </small></li>
+        <li class="list-group-item">
+          <small>
+            <h5>From:</h5>
+            <div class="text-center">
+              <p> <%= user.address_city %>, </p>
+              <b> <%= user.address_country %> </b>
+            </div>
+          </small>  
+        </li>
+
+        <li class="list-group-item">
+          <small>
+            Joined at <%= time_ago_in_words(user.created_at) %> ago. 
+          </small>
+        </li>
 
       </ul>
       
