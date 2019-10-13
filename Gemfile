@@ -44,9 +44,14 @@ gem 'devise', '>= 4.7.1'
 # Others / misc
 gem 'faker'
 gem 'gravtastic'
+
 gem 'simple_form'
+gem 'country_select'
+
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+
+gem 'cloudinary'
 
 
 
