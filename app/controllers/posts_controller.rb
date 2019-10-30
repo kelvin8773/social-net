@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @comment = Comment.new
     @like = Like.new
-    @posts = current_user.posts
+    @posts = Post.all
     @users = User.all
   end
 

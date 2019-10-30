@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 5 }
 
+
   gravtastic secure: true,
              filetype: :gif,
              size: 160
@@ -30,10 +31,13 @@ class User < ApplicationRecord
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-
     friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-
     friends_array.compact
+  end
+
+  def cancel_friend_request(user)
+    friendship = friendships.find { |f| f.friend_id == user.id }
+    friendship.destroy
   end
 
   def pending_friends

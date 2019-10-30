@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"> 
+        <%= render 'shared/personal_info', user: @user %>
+    </div>
+
+    <div class="col-md-6">
+
+        <h3>Friend Request Received</h3>
+        <table class="table">
+          <thead>
+            <tr> 
+              <th scope="col">ID</th>
+              <th scope="col">User</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <% @user.friend_requests.each do |friend| %>
+            <tbody>
+              <tr>
+                <td> <%= friend.id %> </td>
+                <td> <%= render '/users/user_list', user: friend %></td>
+                <td> <%= link_to "Confirm Request", confirm_friend_path(id: friend.id),
+                                                method: :patch,
+                                                data: { confirm: "Are You sure?" },
+                                                class: "btn btn-success "%> 
+                    <%= link_to "Ignore", ignore_request_path(id: friend.id),
+                                                method: :delete,
+                                                data: { confirm: "Are You sure?" },
+                                                class: "btn btn-danger "%></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+
+        <hr>
+        <h3>Friend Request Sent</h3>
+        <table class="table">
+          <thead>
+            <tr> 
+              <th scope="col">ID</th>
+              <th scope="col">User</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <% @user.pending_friends.each do |friend| %>
+            <tbody>
+              <tr>
+                <td> <%= friend.id %> </td>
+                <td> <%= render '/users/user_list', user: friend %></td>
+                <td> <%= link_to "Cancel Request", cancel_request_path(id: friend.id),
+                                                method: :delete,
+                                                data: { confirm: "Are You sure?" },
+                                                class: "btn btn-danger "%> </td>
+              </tr>
+            </tbody>
+         <% end %>
+        </table>
+    </div>
+
+    <div class="col-md-3">
+      <%= render 'shared/friend_list', user: @user %>
+      
+    </div>
+
+  </div>
+</div>
