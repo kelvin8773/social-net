@@ -56,6 +56,12 @@
               <%= f.button :submit, "Log in", class: "btn btn-outline-warning my-2 my-sm-0" %>
             </div>
         <% end %>
+
+       <strong class="nav-item text-white mx-3 mt-1">Or</strong>
+
+       <%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path, 
+        class: "btn btn-outline-warning" %> 
+
        
       <% end %>
   </div>
