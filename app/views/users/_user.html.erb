@@ -1,6 +1,6 @@
 <div class="col-md-4 my-4">
-  <div class="card text-center col-md-12" style="height: 350px;" >
-    <%= link_to image_tag(user.gravatar_url, class: "rounded-circle mx-auto mt-3", style: "width: 3.5rem;" ), users_show_path(user) %>
+  <div class="card text-center col-md-12" style="height: 380px;" >
+    <%= link_to image_tag(user.gravatar_url, class: "rounded-circle mx-auto mt-3", style: "width: 3.5rem;" ), users_show_path(id: user.id) %>
     <div class="card-body">
       <h6 class="card-title text-center"> 
         <%= link_to user.name, users_show_path(user), class: "text-black-50" %> 

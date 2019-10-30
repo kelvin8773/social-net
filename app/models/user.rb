@@ -35,6 +35,8 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
+  
+
   def cancel_friend_request(user)
     friendship = friendships.find { |f| f.friend_id == user.id }
     friendship.destroy

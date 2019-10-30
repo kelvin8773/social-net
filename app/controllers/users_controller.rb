@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where('id != ?', current_user.id)
+    @not_friends = @users.filter { |user| !current_user.friends.include?(user) }
     @friendship = Friendship.new
   end
 

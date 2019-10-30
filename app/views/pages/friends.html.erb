@@ -4,8 +4,15 @@
         <%= render 'shared/personal_info', user: @user %>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-9">
 
+        <div class="row"> 
+        <%= render @user.friends %>
+        </div>
+
+       <%= link_to "Find More Friends ... ", users_index_path, class: "btn btn-primary mx-auto" %>
+
+       <hr class="my-4">
         <h3>Friend Request Received</h3>
         <table class="table">
           <thead>
@@ -58,10 +65,7 @@
         </table>
     </div>
 
-    <div class="col-md-3">
-      <%= render 'shared/friend_list', user: @user %>
-      
-    </div>
+    
 
   </div>
 </div>
