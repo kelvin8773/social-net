@@ -1,5 +1,6 @@
-class FriendshipsController < ApplicationController
+# frozen_string_literal: true
 
+class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
     return unless @friendship.save
@@ -9,7 +10,7 @@ class FriendshipsController < ApplicationController
 
     FriendshipNoticeMailer.friend_request_notice(@user, @friend).deliver_now
 
-    flash[:sucess] = "Friend request have been sent!"
+    flash[:sucess] = 'Friend request have been sent!'
     redirect_to users_index_path
   end
 
@@ -17,14 +18,15 @@ class FriendshipsController < ApplicationController
     @user = User.find_by(id: params[:id])
     return unless current_user.confirm_friend(@user)
 
-    flash[:sucess] = "Friend request confirmed."
+    flash[:sucess] = 'Friend request confirmed.'
     redirect_to friends_path
   end
 
   def destroy
     @user = User.find_by(user_id: params[:id])
     return unless current_user.friends.delete(@user)
-    flash[:danger] = "Friend Removed!!!"
+
+    flash[:danger] = 'Friend Removed!!!'
     redirect_to users_path
   end
 
@@ -45,8 +47,7 @@ class FriendshipsController < ApplicationController
 
   private
 
-  def friendship_params 
+  def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id)
   end
-
 end
