@@ -5,13 +5,15 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where('id != ?', current_user.id)
+    @not_friends = @users.filter { |user| !current_user.friends.include?(user) }
+    @friendship = Friendship.new
   end
 
   def show
     @comment = Comment.new
     @like = Like.new
     @users = User.all
-    @user = User.find_by(id: params[:format])
+    @user = User.find_by(id: params[:id])
     @myposts = Post.where(user_id: @user.id)
   end
 end

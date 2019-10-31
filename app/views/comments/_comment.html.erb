@@ -4,7 +4,7 @@
       <%= link_to image_tag(comment.user.gravatar_url, 
               class: "rounded-circle mr-2", 
               style: "width: 2rem;" ), 
-              users_show_path(comment.user) %>
+              users_show_path(id: comment.user.id) %>
     </span>
     <small class="d-inline-block text-truncate" style="max-width: 20rem;"> 
       <%= comment.content %> 

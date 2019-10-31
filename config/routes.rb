@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     
     
   get 'pages/home'
-  get 'pages/about'
-  get 'pages/contact'
+  
+  get '/friends', to: 'pages#friends'
     
   resources :posts
   resources :likes
@@ -32,5 +32,14 @@ Rails.application.routes.draw do
 
   post 'likes/create'
   delete 'likes/destroy'
+
+  post '/create_friend', to: 'friendships#create'
+  patch '/confirm_friend', to: 'friendships#confirm'
+  delete '/ignore_request', to: 'friendships#ignore'
+  delete '/cancel_request', to: 'friendships#cancel'
+
+  delete '/delete_friend', to: 'friendships#destroy'
+
+
 
 end

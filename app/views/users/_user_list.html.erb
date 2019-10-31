@@ -1,6 +1,6 @@
-<div class="media my-2 ml-2">
+<div class="media mt-1 ml-2">
   <%= link_to image_tag(user.gravatar_url, class: "rounded-circle mr-2", style: "width: 1.6rem;" ), users_show_path(user) %>
   <div class="media-body">
-    <h6 class="mt-1 text-secondary"> <%= link_to user.name, users_show_path(user), class: "text-muted" %></h6> 
+    <h6 class="mt-1 text-secondary"> <%= link_to user.name, users_show_path(id: user.id), class: "text-muted" %></h6> 
   </div>
 </div>

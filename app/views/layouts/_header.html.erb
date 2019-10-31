@@ -14,19 +14,22 @@
             <%=  current_user.first_name %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Profile",  edit_user_registration_path, class: "dropdown-item"%>
+            <%= link_to "Update My Profile",  edit_user_registration_path, class: "dropdown-item"%>
             
             <div class="dropdown-divider"></div>
-            <%= link_to "logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "View My Page", users_show_path(id: current_user.id), class: "dropdown-item" %>
+
           </div>
         </li> 
 
-        <li class="nav-item">  
-            <%= link_to "My Profile", users_show_path(current_user), class: "nav-link" %>
+        <li class="nav-item"> 
+            <%= link_to "Friends",  friends_path, class: "nav-link"%>
+
         </li>
 
         <li class="nav-item">  
-            <%= link_to "Find Friends", users_index_path, class: "nav-link" %>
+            <%= link_to "logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+
         </li>
         
       </ul>     
@@ -53,6 +56,12 @@
               <%= f.button :submit, "Log in", class: "btn btn-outline-warning my-2 my-sm-0" %>
             </div>
         <% end %>
+
+       <strong class="nav-item text-white mx-3 mt-1">Or</strong>
+
+       <%= link_to "Sign In with Facebook", user_facebook_omniauth_authorize_path, 
+        class: "btn btn-outline-warning" %> 
+
        
       <% end %>
   </div>
