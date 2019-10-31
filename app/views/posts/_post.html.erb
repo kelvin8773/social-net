@@ -8,7 +8,7 @@
       <div class="media-body">
           <small class="mt-0"><b> <%= link_to post.user.name, users_show_path(id: post.user.id), class: "text-muted" %></b></small> 
           <br>
-          <small class="font-weight-lighter text-capitalize"><%= time_ago_in_words(post.created_at) %> ago. </small>
+          <small class="font-weight-lighter text-capitalize"><%= time_ago_in_words(post.updated_at) %> ago. </small>
           <% if post.updated_at > post.created_at %>
             <span><small class="font-italic text-black-50">modified</small></span>
           <% end %>
