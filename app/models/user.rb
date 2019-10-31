@@ -30,10 +30,13 @@ class User < ApplicationRecord
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-
     friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-
     friends_array.compact
+  end
+
+  def cancel_friend_request(user)
+    friendship = friendships.find { |f| f.friend_id == user.id }
+    friendship.destroy
   end
 
   def pending_friends
@@ -56,19 +59,19 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
+      data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+      if data
+        user.email = data['email'] if user.email.blank?
       end
     end
   end
-  
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name # assuming the user model has a name
       user.image = auth.info.image # assuming the user model has an image
     end
   end
-
 end

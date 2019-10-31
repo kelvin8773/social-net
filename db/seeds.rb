@@ -6,14 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!( name: 'Kelvin Liang',
-              email: 'kelvin9877@gmail.com',
-              address_country: "China",
-              address_city: "Huizhou",
-              gender: "Male",
-              password: 'foobar',
-              password_confirmation: 'foobar',
-              created_at: Faker::Date.between(from: 100.days.ago, to: 1.days.ago))
 
 User.create!( name: 'Michael Hartl',
               email: 'michael@railstutorial.org',

@@ -3,10 +3,10 @@
     <div class="card-header">
       <div class="media">
       <div data-toggle="tooltip" data-placement="top" title="<%= post.user.name %>" >
-        <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(post.user) %>
+        <%= link_to image_tag(post.user.gravatar_url, class: "rounded-circle mr-4", style: "width: 3rem;" ), users_show_path(id: post.user.id) %>
       </div>
       <div class="media-body">
-          <small class="mt-0"><b> <%= link_to post.user.name, users_show_path(post.user), class: "text-muted" %></b></small> 
+          <small class="mt-0"><b> <%= link_to post.user.name, users_show_path(id: post.user.id), class: "text-muted" %></b></small> 
           <br>
           <small class="font-weight-lighter text-capitalize"><%= time_ago_in_words(post.created_at) %> ago. </small>
           <% if post.updated_at > post.created_at %>
