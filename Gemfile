@@ -42,13 +42,16 @@ gem 'devise', '>= 4.7.1'
 # gem 'omniauth-facebook'
 
 # Others / misc
+gem 'rubocop'
+
 gem 'faker'
 gem 'gravtastic'
+
 
 gem 'simple_form'
 gem 'country_select'
 
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 5.0'
 gem 'dotenv-rails'
 
 gem 'cloudinary'
