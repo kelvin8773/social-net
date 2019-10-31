@@ -4,6 +4,11 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(friendship_params)
     return unless @friendship.save
 
+    @user = User.find_by(id: params[:friendship][:user_id])
+    @friend = User.find_by(id: params[:friendship][:friend_id])
+
+    FriendshipNoticeMailer.friend_request_notice(@user, @friend).deliver_now
+
     flash[:sucess] = "Friend request have been sent!"
     redirect_to users_index_path
   end
