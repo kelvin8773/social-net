@@ -8,7 +8,9 @@ class PostsController < ApplicationController
     @post = Post.new
     @comment = Comment.new
     @like = Like.new
-    @posts = Post.all
+    @friends_posts = current_user.friends.reduce([]) {|all_posts, friend| all_posts += friend.posts  }
+    @posts = current_user.posts + @friends_posts
+
     @users = User.all
   end
 
