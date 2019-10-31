@@ -8,8 +8,8 @@ class PostsController < ApplicationController
     @post = Post.new
     @comment = Comment.new
     @like = Like.new
-    @friends_posts = current_user.friends.reduce([]) {|all_posts, friend| all_posts += friend.posts  }
-    @posts = (current_user.posts + @friends_posts).sort_by {|post| post.updated_at }.reverse
+    @friends_posts = current_user.friends.reduce([]) { |all_posts, friend| all_posts + friend.posts }
+    @posts = (current_user.posts + @friends_posts).sort_by(&:updated_at).reverse
 
     @users = User.all
   end
