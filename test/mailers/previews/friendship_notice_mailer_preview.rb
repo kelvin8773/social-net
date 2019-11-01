@@ -7,4 +7,5 @@ class FriendshipNoticeMailerPreview < ActionMailer::Preview
     @friend = User.last
     FriendshipNoticeMailer.friend_request_notice(@user, @friend)
   end
+  
 end
