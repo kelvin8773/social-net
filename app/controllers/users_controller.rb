@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @post = Post.new
     @comment = Comment.new
     @like = Like.new
     @users = User.all

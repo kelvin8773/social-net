@@ -1,13 +1,15 @@
 <div class="containter pt-3">
-  <h5 class="text-secondary">Friends:</h6>
-    <% if user.friends.empty? %>
-      <small class="text-warning">
-        <%= "Don't friends? Go add some." %>
-      </small>
-    <% else %>
-      <% user.friends.each do |f|  %>
-        <%= render 'users/user_list', user: f %>
+    <h5 class="text-secondary">Friends:</h6>
+      <% if user.friends.empty? %>
+      <div class="d-flex flex-column align-items-center">
+        <small class="text-warning">
+          <%= "Don't have friends?" %>
+        </small>
+        <%= link_to "Go Find Some", users_index_path, class: "btn btn-primary my-3" %>
+      </div>
+      <% else %>
+        <% user.friends.each do |friend|  %>
+          <%= render 'users/user_list', user: friend %>
+        <% end %>
       <% end %>
-    <% end %>
-
 </div>
