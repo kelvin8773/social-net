@@ -39,7 +39,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # login & authentication
 gem 'devise', '>= 4.7.1'
-# gem 'omniauth-facebook'
 
 # Others / misc
 gem 'rubocop'
