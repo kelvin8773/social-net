@@ -14,11 +14,28 @@
 
 [![Social-Net-screenShoot](./docs/social-network-showcase.jpg)](https://social-net-8873.herokuapp.com/)
 
-> An all-in-one project that teasing your skills of Ruby on Rails.
+> A social media app designed to mimic Facebook's core features, such as the ability to create and manage posts, send friend requests, and upload images. I built this project to learn advanced concepts in Rails.
 
 ### ✨ [Demo](https://social-net-8873.herokuapp.com/)
 
-I build this project to learn advance concepts in Rails. 
+### Main Feature
+* User Sign Up with email
+* User Sign in with Facebook ID/Email address
+* Post Text and Picture
+* Like or Comment a Post
+* Request to friend other users
+* Accept / Refuse friend request
+* Update detail personal info
+* Update password
+
+![Data-Diagram](./docs/social-network-data-diagram.jpg)
+
+### Features to implement
+* Improve UI Design
+* System Notification (including Friend Request, Like or Comment your post, @you)
+* Support picture upload
+* Support Rich Text editing
+* Support more social accounts login (such github, google, twitter)
 
 ## Install
 
@@ -36,10 +53,13 @@ rails server
 
 👤 **Kelvin Liang**
 
-* Website: kelvinliang.cn
+* Website: https://medium.com/@Kelvin9877
 * Twitter: [@kelvin9877](https://twitter.com/kelvin9877)
 * Github: [@kelvin8773](https://github.com/kelvin8773)
 * LinkedIn: [@kelvin9877](https://linkedin.com/in/kelvin9877)
+* Email: [kelvinliang@yandex.com](mailto:kelvinliang@yandex.com)
+
+**I am available for hire/looking for next dev position.**
 
 ## 🤝 Contributing
 
